@@ -177,3 +177,4 @@ def get_global_variables_safely():
                        "executing eagerly. Use a Keras model's `.variables` "
                        "attribute instead.")
   return tf.global_variables()
+

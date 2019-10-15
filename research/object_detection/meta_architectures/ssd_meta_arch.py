@@ -1287,3 +1287,4 @@ class SSDMetaArch(model.DetectionModel):
       update_ops.extend(self._feature_extractor.get_updates_for(
           self._feature_extractor.inputs))
     return update_ops
+

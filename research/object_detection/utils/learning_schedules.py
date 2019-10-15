@@ -216,3 +216,4 @@ def manual_stepping(global_step, boundaries, rates, warmup=False):
     return eager_decay_rate
   else:
     return eager_decay_rate()
+

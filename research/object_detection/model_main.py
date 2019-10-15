@@ -25,6 +25,12 @@ import tensorflow as tf
 from object_detection import model_hparams
 from object_detection import model_lib
 
+# armin
+tf.logging.set_verbosity(tf.logging.INFO)
+import os
+os.environ['TF_ENABLE_AUTO_MIXED_PRECISION'] = '1'
+# armin
+
 flags.DEFINE_string(
     'model_dir', None, 'Path to output model directory '
     'where event and checkpoint files will be written.')
@@ -59,8 +65,15 @@ FLAGS = flags.FLAGS
 def main(unused_argv):
   flags.mark_flag_as_required('model_dir')
   flags.mark_flag_as_required('pipeline_config_path')
-  config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir)
-
+  
+  
+  # armin
+  # config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir)
+  config_proto = tf.ConfigProto()
+  config_proto.gpu_options.allow_growth = True
+  config = tf.estimator.RunConfig(model_dir=FLAGS.model_dir, session_config=config_proto)
+  # armin
+  
   train_and_eval_dict = model_lib.create_estimator_and_inputs(
       run_config=config,
       hparams=model_hparams.create_hparams(FLAGS.hparams_overrides),

@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# armin
+research/pycocotools
+# armin
+
 # Distribution / packaging
 .Python
 env/

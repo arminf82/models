@@ -137,3 +137,4 @@ def _create_learning_rate(learning_rate_config, global_step=None):
     raise ValueError('Learning_rate %s not supported.' % learning_rate_type)
 
   return learning_rate
+

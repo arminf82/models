@@ -371,6 +371,10 @@ def train(create_tensor_dict_fn,
     session_config = tf.ConfigProto(allow_soft_placement=True,
                                     log_device_placement=False)
 
+    # armin
+    # session_config.gpu_options.allow_growth = True # ori True
+    # armin
+
     # Save checkpoints regularly.
     keep_checkpoint_every_n_hours = train_config.keep_checkpoint_every_n_hours
     saver = tf.train.Saver(
